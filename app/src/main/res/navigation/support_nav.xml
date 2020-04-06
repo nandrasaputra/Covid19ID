@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/support_menu_item"
+    app:startDestination="@id/supportFragment"
+    tools:ignore="UnusedNavigation">
+
+    <fragment
+        android:id="@+id/supportFragment"
+        android:name="com.nandra.covid19id.ui.SupportFragment"
+        android:label="SupportFragment" />
+
+</navigation>
