@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">Covid19-ID</string>
+
+    <array name="fragment_support_card_autosize_text_sizes_">
+        <item>6sp</item>
+        <item>8sp</item>
+        <item>10sp</item>
+        <item>12sp</item>
+        <item>14sp</item>
+    </array>
 </resources>

@@ -15,6 +15,8 @@ class InformationFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+
+
         /*launch_webview_button.setOnClickListener {
             val intent = Intent(this, WebViewActivity::class.java)
             startActivity(intent)
