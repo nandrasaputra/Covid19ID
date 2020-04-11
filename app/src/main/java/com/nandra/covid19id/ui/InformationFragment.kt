@@ -77,15 +77,19 @@ class InformationFragment : Fragment() {
             is DataLoadState.Loaded -> {
                 introductionListAdapter.submitList(state.contentList)
                 fragment_information_introduction_group.visibility = View.VISIBLE
+                fragment_information_introduction_shimmer.visibility = View.GONE
             }
             DataLoadState.Unloaded -> {
                 sharedViewModel.getInformationIntroductionList(Dispatchers.IO)
             }
             DataLoadState.Loading -> {
-
+                if (fragment_information_introduction_group.visibility == View.VISIBLE) {
+                    fragment_information_introduction_group.visibility = View.GONE
+                }
+                fragment_information_introduction_shimmer.visibility = View.VISIBLE
             }
             is DataLoadState.Error -> {
-
+                fragment_information_introduction_shimmer.visibility = View.GONE
             }
         }
     }
@@ -95,12 +99,20 @@ class InformationFragment : Fragment() {
             is DataLoadState.Loaded -> {
                 otherListAdapter.submitList(state.contentList)
                 fragment_information_other_group.visibility = View.VISIBLE
+                fragment_information_other_shimmer.visibility = View.GONE
             }
             DataLoadState.Unloaded -> {
                 sharedViewModel.getInformationOtherList(Dispatchers.IO)
             }
-            DataLoadState.Loading -> {}
-            is DataLoadState.Error -> {}
+            DataLoadState.Loading -> {
+                if (fragment_information_other_group.visibility == View.VISIBLE) {
+                    fragment_information_other_group.visibility = View.GONE
+                }
+                fragment_information_other_shimmer.visibility = View.VISIBLE
+            }
+            is DataLoadState.Error -> {
+                fragment_information_other_shimmer.visibility = View.GONE
+            }
         }
     }
 
@@ -109,12 +121,20 @@ class InformationFragment : Fragment() {
             is DataLoadState.Loaded -> {
                 lamanListAdapter.submitList(state.contentList)
                 fragment_information_laman_group.visibility = View.VISIBLE
+                fragment_information_laman_shimmer.visibility = View.GONE
             }
             DataLoadState.Unloaded -> {
                 sharedViewModel.getInformationLamanList(Dispatchers.IO)
             }
-            DataLoadState.Loading -> {}
-            is DataLoadState.Error -> {}
+            DataLoadState.Loading -> {
+                if (fragment_information_other_group.visibility == View.VISIBLE) {
+                    fragment_information_other_group.visibility = View.GONE
+                }
+                fragment_information_laman_shimmer.visibility = View.VISIBLE
+            }
+            is DataLoadState.Error -> {
+                fragment_information_laman_shimmer.visibility = View.GONE
+            }
         }
     }
 }
