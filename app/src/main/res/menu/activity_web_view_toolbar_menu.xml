@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:id="@+id/activity_web_view_toolbar_share_menu_item"
+        android:title="Share"
+        app:showAsAction="never"
+        android:icon="@drawable/ic_share"/>
+    <item android:id="@+id/activity_web_view_toolbar_translate_menu_item"
+        android:title="Translate"
+        app:showAsAction="never"
+        android:icon="@drawable/ic_translate"/>
+    <item android:id="@+id/activity_web_view_toolbar_browser_menu_item"
+        android:title="Buka Di Browser"
+        app:showAsAction="never" />
+    <item android:id="@+id/activity_web_view_toolbar_close_menu_item"
+        android:title="Tutup Web"
+        app:showAsAction="never"
+        android:icon="@drawable/ic_translate"/>
+</menu>

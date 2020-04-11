@@ -7,19 +7,19 @@
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/activity_web_view_toolbar"
         android:theme="@style/CustomToolbarTheme"
+        android:background="@color/toolbarBackgroundColor"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:background="@color/toolbarBackgroundColor"
         android:elevation="4dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginEnd="64dp"
-            android:gravity="center">
+            android:gravity="center"
+            android:layout_marginEnd="16dp">
 
             <TextView
                 android:id="@+id/activity_web_view_toolbar_title"
@@ -30,6 +30,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintBottom_toTopOf="@id/activity_web_view_toolbar_sub_title"
                 app:layout_constraintVertical_chainStyle="packed"
+                android:textColor="#FFFFFF"
                 android:textSize="14sp"
                 android:lines="1"
                 android:ellipsize="end"
@@ -47,6 +48,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintVertical_chainStyle="packed"
                 android:fontFamily="@font/airbnb_book"
+                android:textColor="#FFFFFF"
                 android:textSize="12sp"
                 android:lines="1"
                 android:ellipsize="end"

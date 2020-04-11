@@ -6,6 +6,7 @@
 
     <color name="toolbarBackgroundColor">#283593</color>
     <color name="iconColorOnToolbar">@color/iconColor</color>
+    <color name="textColorOnToolbar">#FFFFFF</color>
 
     <color name="iconColorOnSurface">#000000</color>
     <color name="iconColor">#FFFFFF</color>
