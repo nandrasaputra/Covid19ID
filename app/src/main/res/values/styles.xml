@@ -9,7 +9,7 @@
     </style>
 
     <style name="CustomToolbarTheme" parent="ThemeOverlay.MaterialComponents.Dark.ActionBar">
-        <item name="android:background">@color/toolbarBaseColor</item>
+        <item name="android:background">@color/toolbarBackgroundColor</item>
     </style>
 
 </resources>

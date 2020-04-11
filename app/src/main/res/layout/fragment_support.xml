@@ -9,7 +9,7 @@
         android:id="@+id/fragment_support_toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="#283593"
+        android:background="@color/toolbarBackgroundColor"
         android:elevation="4dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -103,7 +103,7 @@
                 android:layout_marginStart="24dp"
                 app:layout_constraintVertical_chainStyle="packed" />
 
-            <androidx.appcompat.widget.AppCompatTextView
+            <TextView
                 android:id="@+id/fragment_support_card_call_center_content"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
@@ -115,7 +115,7 @@
                 app:autoSizeMinTextSize="6sp"
                 app:autoSizeMaxTextSize="12sp"
                 app:autoSizeStepGranularity="2sp"
-                android:text="Hubungi 119 COVID-19 hotline untuk mendapatkan informasi dan bantuan lebih lanjut"
+                android:text="Hubungi COVID-19 Hotline 119 untuk mendapatkan informasi dan bantuan lebih lanjut"
                 android:textSize="12dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/fragment_support_card_call_center_chevron"
@@ -182,7 +182,7 @@
                 android:layout_marginStart="24dp"
                 app:layout_constraintVertical_chainStyle="packed" />
 
-            <androidx.appcompat.widget.AppCompatTextView
+            <TextView
                 android:id="@+id/fragment_support_card_nearby_hospital_content"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
