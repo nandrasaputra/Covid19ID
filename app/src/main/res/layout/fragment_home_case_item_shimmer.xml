@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.facebook.shimmer.ShimmerFrameLayout
+    android:layout_height="wrap_content"
+    android:layout_width="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/case_item_root_layout_shimmer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        app:cardCornerRadius="16dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingTop="16dp"
+            android:paddingBottom="16dp">
+
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:id="@+id/case_item_title_shimmer"
+                android:layout_width="100dp"
+                android:layout_height="18dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="16dp"
+                android:scaleType="centerCrop"
+                app:riv_corner_radius="8dp"
+                android:src="@color/shimmerColorTwo"/>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/case_item_infected_layout_shimmer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:layout_constraintEnd_toStartOf="@id/case_item_recovered_layout_shimmer"
+                app:layout_constraintTop_toBottomOf="@id/case_item_title_shimmer"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <com.makeramen.roundedimageview.RoundedImageView
+                    android:id="@+id/case_item_infected_image_shimmer"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:src="@color/shimmerColorTwo"
+                    android:scaleType="centerCrop"
+                    app:riv_corner_radius="50dp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"/>
+
+                <com.makeramen.roundedimageview.RoundedImageView
+                    android:id="@+id/case_item_total_infected_count_number_shimmer"
+                    android:layout_width="50dp"
+                    android:layout_height="14dp"
+                    app:layout_constraintStart_toStartOf="@id/case_item_infected_image_shimmer"
+                    app:layout_constraintTop_toBottomOf="@id/case_item_infected_image_shimmer"
+                    app:layout_constraintEnd_toEndOf="@id/case_item_infected_image_shimmer"
+                    android:layout_marginTop="8dp"
+                    android:src="@color/shimmerColorOne"
+                    android:scaleType="centerCrop"
+                    app:riv_corner_radius="8dp"
+                    />
+
+                <com.makeramen.roundedimageview.RoundedImageView
+                    android:id="@+id/case_item_total_infected_count_text_shimmer"
+                    android:layout_width="80dp"
+                    android:layout_height="14dp"
+                    app:layout_constraintEnd_toEndOf="@id/case_item_total_infected_count_number_shimmer"
+                    app:layout_constraintStart_toStartOf="@id/case_item_total_infected_count_number_shimmer"
+                    app:layout_constraintTop_toBottomOf="@id/case_item_total_infected_count_number_shimmer"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_marginTop="2dp"
+                    android:src="@color/shimmerColorOne"
+                    android:scaleType="centerCrop"
+                    app:riv_corner_radius="8dp"
+                    />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/case_item_recovered_layout_shimmer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:layout_constraintTop_toBottomOf="@id/case_item_title_shimmer"
+                app:layout_constraintStart_toEndOf="@id/case_item_infected_layout_shimmer"
+                app:layout_constraintEnd_toStartOf="@id/case_item_death_layout_shimmer">
+
+                <com.makeramen.roundedimageview.RoundedImageView
+                    android:id="@+id/case_item_recovered_image_shimmer"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:src="@color/shimmerColorTwo"
+                    android:scaleType="centerCrop"
+                    app:riv_corner_radius="50dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.makeramen.roundedimageview.RoundedImageView
+                    android:id="@+id/case_item_total_recovered_count_number_shimmer"
+                    android:layout_width="50dp"
+                    android:layout_height="14dp"
+                    app:layout_constraintStart_toStartOf="@id/case_item_recovered_image_shimmer"
+                    app:layout_constraintTop_toBottomOf="@id/case_item_recovered_image_shimmer"
+                    app:layout_constraintEnd_toEndOf="@id/case_item_recovered_image_shimmer"
+                    android:layout_marginTop="8dp"
+                    android:src="@color/shimmerColorOne"
+                    android:scaleType="centerCrop"
+                    app:riv_corner_radius="8dp"
+                    />
+
+                <com.makeramen.roundedimageview.RoundedImageView
+                    android:id="@+id/case_item_total_recovered_count_text_shimmer"
+                    android:layout_width="80dp"
+                    android:layout_height="14dp"
+                    app:layout_constraintEnd_toEndOf="@id/case_item_total_recovered_count_number_shimmer"
+                    app:layout_constraintStart_toStartOf="@id/case_item_total_recovered_count_number_shimmer"
+                    app:layout_constraintTop_toBottomOf="@id/case_item_total_recovered_count_number_shimmer"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_marginTop="2dp"
+                    android:src="@color/shimmerColorOne"
+                    android:scaleType="centerCrop"
+                    app:riv_corner_radius="8dp"
+                    />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/case_item_death_layout_shimmer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:layout_constraintStart_toEndOf="@id/case_item_recovered_layout_shimmer"
+                app:layout_constraintTop_toBottomOf="@id/case_item_title_shimmer"
+                app:layout_constraintEnd_toEndOf="parent">
+
+                <com.makeramen.roundedimageview.RoundedImageView
+                    android:id="@+id/case_item_death_image_shimmer"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:src="@color/shimmerColorTwo"
+                    android:scaleType="centerCrop"
+                    app:riv_corner_radius="50dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.makeramen.roundedimageview.RoundedImageView
+                    android:id="@+id/case_item_total_death_count_number_shimmer"
+                    android:layout_width="50dp"
+                    android:layout_height="14dp"
+                    app:layout_constraintStart_toStartOf="@id/case_item_death_image_shimmer"
+                    app:layout_constraintTop_toBottomOf="@id/case_item_death_image_shimmer"
+                    app:layout_constraintEnd_toEndOf="@id/case_item_death_image_shimmer"
+                    android:layout_marginTop="8dp"
+                    android:src="@color/shimmerColorOne"
+                    android:scaleType="centerCrop"
+                    app:riv_corner_radius="8dp"
+                    />
+
+                <com.makeramen.roundedimageview.RoundedImageView
+                    android:id="@+id/case_item_total_death_count_text_shimmer"
+                    android:layout_width="80dp"
+                    android:layout_height="14dp"
+                    app:layout_constraintEnd_toEndOf="@id/case_item_total_death_count_number_shimmer"
+                    app:layout_constraintStart_toStartOf="@id/case_item_total_death_count_number_shimmer"
+                    app:layout_constraintTop_toBottomOf="@id/case_item_total_death_count_number_shimmer"
+                    android:layout_marginTop="2dp"
+                    android:src="@color/shimmerColorOne"
+                    android:scaleType="centerCrop"
+                    app:riv_corner_radius="8dp"
+                    />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+</com.facebook.shimmer.ShimmerFrameLayout>

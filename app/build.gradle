@@ -40,6 +40,8 @@ dependencies {
     def nav_version = "2.2.1"
     def lifecycle_version = "2.2.0"
     def glide_version = "4.9.0"
+    def gsonVersion = "2.8.5"
+    def retrofitVersion = "2.6.1"
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
@@ -71,4 +73,9 @@ dependencies {
     implementation 'com.firebaseui:firebase-ui-storage:6.2.0'
     //Facebook Shimmer
     implementation 'com.facebook.shimmer:shimmer:0.5.0'
+    //Retrofit
+    implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
+    //Gson
+    implementation "com.google.code.gson:gson:$gsonVersion"
 }

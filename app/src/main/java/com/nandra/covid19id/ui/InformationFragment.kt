@@ -10,6 +10,7 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.nandra.covid19id.R
 import com.nandra.covid19id.adapter.ContentListAdapter
+import com.nandra.covid19id.model.Content
 import com.nandra.covid19id.utils.Utility
 import com.nandra.covid19id.viewmodel.SharedViewModel
 import com.nandra.covid19id.viewmodel.SharedViewModel.Companion.DataLoadState
@@ -75,7 +76,7 @@ class InformationFragment : Fragment() {
     private fun handleIntroductionDataLoadState(state: DataLoadState) {
         when(state) {
             is DataLoadState.Loaded -> {
-                introductionListAdapter.submitList(state.contentList)
+                introductionListAdapter.submitList(state.data as List<Content>)
                 fragment_information_introduction_group.visibility = View.VISIBLE
                 fragment_information_introduction_shimmer.visibility = View.GONE
             }
@@ -97,7 +98,7 @@ class InformationFragment : Fragment() {
     private fun handleOtherDataLoadState(state: DataLoadState) {
         when(state) {
             is DataLoadState.Loaded -> {
-                otherListAdapter.submitList(state.contentList)
+                otherListAdapter.submitList(state.data as List<Content>)
                 fragment_information_other_group.visibility = View.VISIBLE
                 fragment_information_other_shimmer.visibility = View.GONE
             }
@@ -119,7 +120,7 @@ class InformationFragment : Fragment() {
     private fun handleLamanDataLoadState(state: DataLoadState) {
         when(state) {
             is DataLoadState.Loaded -> {
-                lamanListAdapter.submitList(state.contentList)
+                lamanListAdapter.submitList(state.data as List<Content>)
                 fragment_information_laman_group.visibility = View.VISIBLE
                 fragment_information_laman_shimmer.visibility = View.GONE
             }

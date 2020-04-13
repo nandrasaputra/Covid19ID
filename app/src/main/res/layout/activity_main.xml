@@ -15,6 +15,7 @@
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/main_activity_bottom_navigation_view"
+        android:theme="@style/CustomBottomNavigationTheme"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
