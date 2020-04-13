@@ -76,9 +76,10 @@ class InformationFragment : Fragment() {
     private fun handleIntroductionDataLoadState(state: DataLoadState) {
         when(state) {
             is DataLoadState.Loaded -> {
+                fragment_information_introduction_shimmer.clearAnimation()
+                fragment_information_introduction_shimmer.visibility = View.GONE
                 introductionListAdapter.submitList(state.data as List<Content>)
                 fragment_information_introduction_group.visibility = View.VISIBLE
-                fragment_information_introduction_shimmer.visibility = View.GONE
             }
             DataLoadState.Unloaded -> {
                 sharedViewModel.getInformationIntroductionList(Dispatchers.IO)
@@ -98,9 +99,10 @@ class InformationFragment : Fragment() {
     private fun handleOtherDataLoadState(state: DataLoadState) {
         when(state) {
             is DataLoadState.Loaded -> {
+                fragment_information_introduction_shimmer.clearAnimation()
+                fragment_information_other_shimmer.visibility = View.GONE
                 otherListAdapter.submitList(state.data as List<Content>)
                 fragment_information_other_group.visibility = View.VISIBLE
-                fragment_information_other_shimmer.visibility = View.GONE
             }
             DataLoadState.Unloaded -> {
                 sharedViewModel.getInformationOtherList(Dispatchers.IO)
@@ -120,9 +122,10 @@ class InformationFragment : Fragment() {
     private fun handleLamanDataLoadState(state: DataLoadState) {
         when(state) {
             is DataLoadState.Loaded -> {
+                fragment_information_introduction_shimmer.clearAnimation()
+                fragment_information_laman_shimmer.visibility = View.GONE
                 lamanListAdapter.submitList(state.data as List<Content>)
                 fragment_information_laman_group.visibility = View.VISIBLE
-                fragment_information_laman_shimmer.visibility = View.GONE
             }
             DataLoadState.Unloaded -> {
                 sharedViewModel.getInformationLamanList(Dispatchers.IO)

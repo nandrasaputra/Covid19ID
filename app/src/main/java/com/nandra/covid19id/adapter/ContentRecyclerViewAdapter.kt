@@ -38,6 +38,7 @@ class ContentListAdapter : ListAdapter<Content, ContentListAdapter.ContentViewHo
 
             Glide.with(itemView.context)
                 .load(firebaseStorage.getReferenceFromUrl(content.image_path))
+                .placeholder(R.color.shimmerColorTwo)
                 .into(itemView.fragment_information_item_image)
 
             itemView.setOnClickListener {
