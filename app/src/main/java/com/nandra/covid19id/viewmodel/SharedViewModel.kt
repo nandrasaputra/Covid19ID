@@ -9,6 +9,7 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
 import com.nandra.covid19id.model.Content
+import com.nandra.covid19id.network.response.model.Attributes
 import com.nandra.covid19id.repository.CovidRepository
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.launch
@@ -37,6 +38,10 @@ class SharedViewModel(app: Application) : AndroidViewModel(app) {
         get() = _homeGlobalCoronaDataLoadState
     private val _homeGlobalCoronaDataLoadState = MutableLiveData<DataLoadState>(DataLoadState.Unloaded)
 
+    val homeIndonesiaProvinceCoronaDataLoadState: LiveData<DataLoadState>
+        get() = _homeIndonesiaProvinceCoronaDataLoadState
+    private val _homeIndonesiaProvinceCoronaDataLoadState = MutableLiveData<DataLoadState>(DataLoadState.Unloaded)
+
     fun getInformationIntroductionList(dispatcher: CoroutineDispatcher) {
         viewModelScope.launch(dispatcher) {
             fetchInformationIntroductionList()
@@ -64,6 +69,12 @@ class SharedViewModel(app: Application) : AndroidViewModel(app) {
     fun getHomeGlobalCoronaList(dispatcher: CoroutineDispatcher) {
         viewModelScope.launch(dispatcher) {
             fetchHomeGlobalCoronaData()
+        }
+    }
+
+    fun getHomeIndonesiaProvinceCoronaList(dispatcher: CoroutineDispatcher) {
+        viewModelScope.launch(dispatcher) {
+            fetchHomeIndonesiaProvinceCoronaData()
         }
     }
 
@@ -151,6 +162,28 @@ class SharedViewModel(app: Application) : AndroidViewModel(app) {
             }
         } catch (exception: Exception) {
             _homeGlobalCoronaDataLoadState.postValue(DataLoadState.Error(exception.message ?: "Gagal Memuat Data, Silahkan Periksa Koneksi Internet"))
+        }
+    }
+
+    private suspend fun fetchHomeIndonesiaProvinceCoronaData() {
+        _homeIndonesiaProvinceCoronaDataLoadState.postValue(DataLoadState.Loading)
+        try {
+            val response = covidRepository.getIndonesiaProvinceDataResponse()
+            if (response.isSuccessful) {
+                val listFeature = response.body()!!.features.toList()
+                val listAttribute = mutableListOf<Attributes>()
+                listFeature.forEach {
+                    listAttribute.add(it.attributes)
+                }
+
+                val filteredList = listAttribute.subList(0,33)
+
+                _homeIndonesiaProvinceCoronaDataLoadState.postValue(DataLoadState.Loaded(filteredList))
+            } else {
+                _homeIndonesiaProvinceCoronaDataLoadState.postValue(DataLoadState.Error( "Gagal Memuat Data, Silahkan Periksa Koneksi Internet"))
+            }
+        } catch (exception: Exception) {
+            _homeIndonesiaProvinceCoronaDataLoadState.postValue(DataLoadState.Error(exception.message ?: "Gagal Memuat Data, Silahkan Periksa Koneksi Internet"))
         }
     }
 

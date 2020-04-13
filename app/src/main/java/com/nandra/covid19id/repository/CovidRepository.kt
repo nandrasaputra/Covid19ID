@@ -3,8 +3,10 @@ package com.nandra.covid19id.repository
 import android.app.Application
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import com.nandra.covid19id.network.apiservice.BnpbApiService
 import com.nandra.covid19id.network.apiservice.LmaoNinjaApiService
 import com.nandra.covid19id.network.interceptor.ConnectivityInterceptor
+import com.nandra.covid19id.network.response.BnpbResponse
 import com.nandra.covid19id.network.response.CountriesResponse
 import com.nandra.covid19id.network.response.CountryResponse
 import retrofit2.Response
@@ -14,6 +16,7 @@ class CovidRepository(app: Application) {
     private val firebaseDatabaseReference = FirebaseDatabase.getInstance().reference
     private val interceptor = ConnectivityInterceptor(app)
     private val lmaoNinjaApiService = LmaoNinjaApiService(interceptor)
+    private val bnpbApiService = BnpbApiService(interceptor)
 
     fun getInformationIntroductionDatabaseReference() : DatabaseReference {
         return firebaseDatabaseReference.child("content/covid_introduction")
@@ -37,5 +40,9 @@ class CovidRepository(app: Application) {
 
     suspend fun getGlobalDataResponse() : Response<CountryResponse> {
         return lmaoNinjaApiService.getGlobalData()
+    }
+
+    suspend fun getIndonesiaProvinceDataResponse() : Response<BnpbResponse> {
+        return bnpbApiService.getIndonesiaProvinceCoronaData()
     }
 }

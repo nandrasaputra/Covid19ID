@@ -1,6 +1,7 @@
 package com.nandra.covid19id.network.response
 
 import com.google.gson.annotations.SerializedName
+import com.nandra.covid19id.network.response.model.CountryInfo
 
 data class CountryResponse(
     @SerializedName("updated")
