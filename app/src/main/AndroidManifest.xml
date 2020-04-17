@@ -1,5 +1,5 @@
-<manifest
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.nandra.covid19id">
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -11,18 +11,21 @@
         android:roundIcon="@mipmap/ic_covid_launcher_logo_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        android:usesCleartextTraffic="true">
+        android:usesCleartextTraffic="true"
+        tools:ignore="LockedOrientationActivity">
 
         <activity
             android:name=".ui.MainActivity"
-            android:theme="@style/SplashScreenTheme">
+            android:theme="@style/SplashScreenTheme"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
-        <activity android:name=".ui.WebViewActivity"/>
+        <activity android:name=".ui.WebViewActivity"
+            android:screenOrientation="portrait"/>
 
     </application>
 </manifest>

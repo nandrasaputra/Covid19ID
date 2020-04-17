@@ -175,7 +175,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun convertMillisecondToStringDate(millisecond: Long) : String {
-        val formatter = SimpleDateFormat("dd/MM/yyyy hh:mm")
+        val formatter = SimpleDateFormat("dd/MM/yyyy HH:mm")
         return formatter.format(Date(millisecond))
     }
 
