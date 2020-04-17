@@ -24,9 +24,11 @@ Covid-19 ID is an unofficial Covid-19 tracker and awareness app that has Beranda
 
 ## Author
 
-Nandra Saputra - <a href='https://www.instagram.com/nandrasptr/'>@nandrasptr</a> on Instagram
+Nandra Saputra
+* <a href='https://www.instagram.com/nandrasptr/'>@nandrasptr</a> on Instagram
+* <a href='https://www.linkedin.com/in/nandra-saputra-b90b78157/'>LinkedIn</a> Account
 
-## APK File
+## Download Application - APK File
 This app require Android 5.0 - Lolipop or higher to run, <a href='http://www.bit.ly/CovidDownload'>Download Link</a>
 
 ## License
