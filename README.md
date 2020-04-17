@@ -31,4 +31,4 @@ This app require Android 5.0 - Lolipop or higher to run, <a href='http://www.bit
 
 ## License
 
-Apache 2.0. See the <a href='https://github.com/nandrasaputra/MySchool/blob/master/LICENSE'>LICENSE</a> file for details.
+Apache 2.0. See the <a href='https://github.com/nandrasaputra/Covid19ID/blob/master/LICENSE'>LICENSE</a> file for details.
