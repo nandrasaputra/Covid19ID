@@ -1,7 +1,7 @@
 <img height='200' src="app/src/main/res/mipmap-xxxhdpi/ic_covid_launcher_logo.png" align="left">
 
 # Covid-19 ID
-Covid-19 ID is an unofficial Covid-19 tracker and awareness app that has Beranda (display covid 19 cases), information (give information related to covid-19) and Bantuan (show emergencies related stuff). This app is developed in order to participate in <a href='https://www.dicoding.com/challenges/580'>IDCamp 2020 Developer Challenge - Lawan Penyebaran COVID-19 dengan Inovasi</a>, a <a href='https://www.dicoding.com/'>Dicoding</a> challanges.
+Covid-19 ID is an unofficial Covid-19 tracker and awareness app that has Beranda (display covid 19 cases), information (give information related to covid-19) and Bantuan (show emergencies related stuff). This app is developed to participate in <a href='https://www.dicoding.com/challenges/580'>IDCamp 2020 Developer Challenge - Lawan Penyebaran COVID-19 dengan Inovasi</a>, a <a href='https://www.dicoding.com/'>Dicoding</a> challanges.
 
 ## Preview
 <p float="left">
