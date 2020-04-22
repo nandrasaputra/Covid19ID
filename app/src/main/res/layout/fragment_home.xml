@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/fragment_home_root"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -61,53 +61,25 @@
                 app:riv_corner_radius="16dp" />
 
             <com.facebook.shimmer.ShimmerFrameLayout
-                android:id="@+id/fragment_home_headline_case_shimmer"
+                android:id="@+id/fragment_home_general_case_headline_shimmer"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
                 app:layout_constraintStart_toStartOf="@id/fragment_home_start_guideline"
-                app:layout_constraintTop_toBottomOf="@id/fragment_home_banner">
+                app:layout_constraintTop_toBottomOf="@id/fragment_home_banner"
+                android:visibility="gone">
 
                 <com.makeramen.roundedimageview.RoundedImageView
                     android:layout_width="200dp"
                     android:layout_height="18dp"
                     android:scaleType="centerCrop"
                     android:src="@color/shimmerColorThree"
-                    android:visibility="gone"
                     app:riv_corner_radius="8dp" />
 
             </com.facebook.shimmer.ShimmerFrameLayout>
 
-            <include
-                android:id="@+id/fragment_home_global_case_shimmer"
-                layout="@layout/fragment_home_case_item_shimmer"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="8dp"
-                android:visibility="gone"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/fragment_home_headline_case_shimmer" />
-
-            <include
-                android:id="@+id/fragment_home_indonesia_case_shimmer"
-                layout="@layout/fragment_home_case_item_shimmer"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginBottom="8dp"
-                android:visibility="gone"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/fragment_home_global_case_shimmer" />
-
             <TextView
-                android:id="@+id/fragment_home_headline_case"
+                android:id="@+id/fragment_home_general_case_headline"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
@@ -119,8 +91,28 @@
                 app:layout_constraintStart_toStartOf="@id/fragment_home_start_guideline"
                 app:layout_constraintTop_toBottomOf="@id/fragment_home_banner" />
 
+            <androidx.constraintlayout.widget.Barrier
+                android:id="@+id/fragment_home_general_case_headline_barrier"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:barrierDirection="bottom"
+                app:constraint_referenced_ids="fragment_home_general_case_headline,fragment_home_general_case_headline_shimmer" />
+
             <include
-                android:id="@+id/fragment_home_global_case"
+                android:id="@+id/fragment_home_global_case_content_shimmer"
+                layout="@layout/fragment_home_case_item_shimmer"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="8dp"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/fragment_home_general_case_headline_barrier" />
+
+            <include
+                android:id="@+id/fragment_home_global_case_content"
                 layout="@layout/fragment_home_case_item"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -128,10 +120,31 @@
                 android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="@id/fragment_home_end_guideline"
                 app:layout_constraintStart_toStartOf="@id/fragment_home_start_guideline"
-                app:layout_constraintTop_toBottomOf="@id/fragment_home_headline_case" />
+                app:layout_constraintTop_toBottomOf="@id/fragment_home_general_case_headline_barrier" />
+
+            <androidx.constraintlayout.widget.Barrier
+                android:id="@+id/fragment_home_global_case_content_barrier"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:barrierDirection="bottom"
+                app:constraint_referenced_ids="fragment_home_global_case_content, fragment_home_global_case_content_shimmer" />
 
             <include
-                android:id="@+id/fragment_home_indonesia_case"
+                android:id="@+id/fragment_home_indonesia_case_content_shimmer"
+                layout="@layout/fragment_home_case_item_shimmer"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/fragment_home_global_case_content_barrier" />
+
+            <include
+                android:id="@+id/fragment_home_indonesia_case_content"
                 layout="@layout/fragment_home_case_item"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -140,10 +153,61 @@
                 android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="@id/fragment_home_end_guideline"
                 app:layout_constraintStart_toStartOf="@id/fragment_home_start_guideline"
-                app:layout_constraintTop_toBottomOf="@id/fragment_home_global_case" />
+                app:layout_constraintTop_toBottomOf="@id/fragment_home_global_case_content_barrier" />
+
+            <androidx.constraintlayout.widget.Barrier
+                android:id="@+id/fragment_home_indonesia_case_content_barrier"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:barrierDirection="bottom"
+                app:constraint_referenced_ids="fragment_home_indonesia_case_content_shimmer, fragment_home_indonesia_case_content" />
+
+            <com.facebook.shimmer.ShimmerFrameLayout
+                android:id="@+id/fragment_home_province_case_shimmer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                app:layout_constraintStart_toStartOf="@id/fragment_home_start_guideline"
+                app:layout_constraintTop_toBottomOf="@id/fragment_home_indonesia_case_content_barrier"
+                android:visibility="gone">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <com.makeramen.roundedimageview.RoundedImageView
+                        android:id="@+id/fragment_home_case_province_headline_shimmer"
+                        android:layout_width="200dp"
+                        android:layout_height="18dp"
+                        android:layout_marginStart="16dp"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        android:scaleType="centerCrop"
+                        android:src="@color/shimmerColorThree"
+                        app:riv_corner_radius="8dp" />
+
+                    <com.makeramen.roundedimageview.RoundedImageView
+                        android:id="@+id/fragment_home_case_province_content_shimmer"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginBottom="16dp"
+                        android:src="@color/shimmerColorTwo"
+                        android:scaleType="centerCrop"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintDimensionRatio="W, 1:2"
+                        app:layout_constraintTop_toBottomOf="@id/fragment_home_case_province_headline_shimmer"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:riv_corner_radius="16dp" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.facebook.shimmer.ShimmerFrameLayout>
 
             <TextView
-                android:id="@+id/fragment_home_headline_case_province"
+                android:id="@+id/fragment_home_province_case_headline"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
@@ -152,28 +216,28 @@
                 android:textColor="#0D47A1"
                 android:textSize="18sp"
                 app:layout_constraintStart_toStartOf="@id/fragment_home_start_guideline"
-                app:layout_constraintTop_toBottomOf="@id/fragment_home_indonesia_case" />
+                app:layout_constraintTop_toBottomOf="@id/fragment_home_indonesia_case_content_barrier" />
 
             <com.makeramen.roundedimageview.RoundedImageView
-                android:id="@+id/fragment_home_case_province"
+                android:id="@+id/fragment_home_province_case_content"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_marginTop="16dp"
                 android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
                 android:layout_marginBottom="16dp"
-                app:riv_corner_radius="16dp"
                 android:src="@drawable/img_banner_indonesia"
-                app:layout_constraintDimensionRatio="W, 1:2"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/fragment_home_headline_case_province" />
+                app:layout_constraintDimensionRatio="W, 1:2"
+                app:layout_constraintTop_toBottomOf="@id/fragment_home_province_case_headline"
+                app:riv_corner_radius="16dp" />
 
             <androidx.constraintlayout.widget.Group
                 android:id="@+id/fragment_home_case_province_group"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:constraint_referenced_ids="fragment_home_case_province,fragment_home_headline_case_province"
-                android:visibility="gone"/>
+                android:visibility="gone"
+                app:constraint_referenced_ids="fragment_home_province_case_content,fragment_home_province_case_headline" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

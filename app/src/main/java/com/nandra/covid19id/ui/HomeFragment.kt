@@ -57,7 +57,7 @@ class HomeFragment : Fragment() {
                     lastUpdate = convertMillisecondToStringDate(data.updateDate)
                 } catch (exception: Exception) { }
 
-                fragment_home_global_case.apply {
+                fragment_home_global_case_content.apply {
                     case_item_title.text = "Global"
                     case_item_total_infected_count_number.text = data.totalCase.toString()
                     case_item_total_death_count_number.text = data.totalDeath.toString()
@@ -69,22 +69,24 @@ class HomeFragment : Fragment() {
                         case_item_last_update.visibility = View.GONE
                     }
                 }
-                fragment_home_headline_case_shimmer.visibility = View.GONE
-                fragment_home_global_case_shimmer.visibility = View.GONE
-                fragment_home_headline_case.visibility = View.VISIBLE
-                fragment_home_global_case.visibility = View.VISIBLE
+                fragment_home_general_case_headline_shimmer.visibility = View.GONE
+                fragment_home_global_case_content_shimmer.visibility = View.GONE
+                fragment_home_general_case_headline.visibility = View.VISIBLE
+                fragment_home_global_case_content.visibility = View.VISIBLE
             }
             DataLoadState.Unloaded -> {
                 sharedViewModel.getHomeGlobalCoronaList(Dispatchers.IO)
             }
             DataLoadState.Loading -> {
-                fragment_home_headline_case_shimmer.visibility = View.VISIBLE
-                fragment_home_global_case_shimmer.visibility = View.VISIBLE
+                fragment_home_general_case_headline_shimmer.visibility = View.VISIBLE
+                fragment_home_global_case_content_shimmer.visibility = View.VISIBLE
             }
             is DataLoadState.Error -> {
                 if (isConnectedToInternet()) {
                     sharedViewModel.getHomeGlobalCoronaList(Dispatchers.IO)
                 } else {
+                    fragment_home_general_case_headline_shimmer.visibility = View.GONE
+                    fragment_home_global_case_content_shimmer.visibility = View.GONE
                     showErrorToast(state.errorMessage)
                 }
             }
@@ -100,7 +102,7 @@ class HomeFragment : Fragment() {
                     lastUpdate = convertMillisecondToStringDate(data.updateDate)
                 } catch (exception: Exception) { }
 
-                fragment_home_indonesia_case.apply {
+                fragment_home_indonesia_case_content.apply {
                     case_item_title.text = "Indonesia"
                     case_item_total_infected_count_number.text = data.totalCase.toString()
                     case_item_total_death_count_number.text = data.totalDeath.toString()
@@ -112,22 +114,20 @@ class HomeFragment : Fragment() {
                         case_item_last_update.visibility = View.GONE
                     }
                 }
-                fragment_home_indonesia_case_shimmer.visibility = View.GONE
-                fragment_home_indonesia_case.visibility = View.VISIBLE
-
-                //TODO: FIX THIS LATER
-                sharedViewModel.getHomeIndonesiaProvinceCoronaList(Dispatchers.IO)
+                fragment_home_indonesia_case_content_shimmer.visibility = View.GONE
+                fragment_home_indonesia_case_content.visibility = View.VISIBLE
             }
             DataLoadState.Unloaded -> {
                 sharedViewModel.getHomeIndonesiaCoronaList(Dispatchers.IO)
             }
             DataLoadState.Loading -> {
-                fragment_home_indonesia_case_shimmer.visibility = View.VISIBLE
+                fragment_home_indonesia_case_content_shimmer.visibility = View.VISIBLE
             }
             is DataLoadState.Error -> {
                 if (isConnectedToInternet()) {
                     sharedViewModel.getHomeIndonesiaCoronaList(Dispatchers.IO)
                 } else {
+                    fragment_home_indonesia_case_content_shimmer.visibility = View.GONE
                     showErrorToast(state.errorMessage)
                 }
             }
@@ -137,24 +137,27 @@ class HomeFragment : Fragment() {
     private fun handleIndonesiaProvinceCoronaDataLoadState(state: DataLoadState) {
         when(state) {
             is DataLoadState.Loaded -> {
+                fragment_home_province_case_shimmer.visibility = View.GONE
                 fragment_home_case_province_group.visibility = View.VISIBLE
             }
             DataLoadState.Unloaded -> {
-
+                sharedViewModel.getHomeIndonesiaProvinceCoronaList(Dispatchers.IO)
             }
             DataLoadState.Loading -> {
-
+                fragment_home_province_case_shimmer.visibility = View.VISIBLE
             }
             is DataLoadState.Error -> {
                 if (isConnectedToInternet()) {
                     sharedViewModel.getHomeIndonesiaProvinceCoronaList(Dispatchers.IO)
+                } else {
+                    fragment_home_province_case_shimmer.visibility = View.GONE
                 }
             }
         }
     }
 
     private fun setupView() {
-        fragment_home_case_province.setOnClickListener {
+        fragment_home_province_case_content.setOnClickListener {
             findNavController().navigate(R.id.action_homeFragment_to_indonesiaProvinceDetailFragment)
         }
     }
