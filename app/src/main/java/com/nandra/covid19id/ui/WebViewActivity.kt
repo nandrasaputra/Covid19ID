@@ -130,7 +130,7 @@ class WebViewActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when(item.itemId) {
             R.id.activity_web_view_toolbar_share_menu_item -> {
-                val contentText = "$extraWebTitle :\n$currentUrl\n\nDownload Aplikasi COVID-19 ID"
+                val contentText = "$extraWebTitle :\n$currentUrl\n\nDownload Aplikasi COVID-19 ID\nwww.bit.ly/CovidDownload"
                 val sharingIntent = Intent(Intent.ACTION_SEND).apply {
                     type = "text/plain"
                     putExtra(Intent.EXTRA_SUBJECT, "COVID-19 ID")

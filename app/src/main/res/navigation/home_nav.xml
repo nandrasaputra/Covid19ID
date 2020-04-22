@@ -14,10 +14,17 @@
         <action
             android:id="@+id/action_homeFragment_to_indonesiaProvinceDetailFragment"
             app:destination="@id/indonesiaProvinceDetailFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_otherCountriesDetailFragment"
+            app:destination="@id/otherCountriesDetailFragment" />
     </fragment>
     <fragment
         android:id="@+id/indonesiaProvinceDetailFragment"
         android:name="com.nandra.covid19id.ui.IndonesiaProvinceDetailFragment"
         android:label="IndonesiaProvinceDetailFragment" />
+    <fragment
+        android:id="@+id/otherCountriesDetailFragment"
+        android:name="com.nandra.covid19id.ui.OtherCountriesDetailFragment"
+        android:label="OtherCountriesDetailFragment" />
 
 </navigation>

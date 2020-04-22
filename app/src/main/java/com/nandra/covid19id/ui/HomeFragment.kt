@@ -1,12 +1,14 @@
 package com.nandra.covid19id.ui
 
+import android.app.Activity
 import android.content.Context
+import android.content.DialogInterface
 import android.net.ConnectivityManager
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
@@ -26,14 +28,51 @@ class HomeFragment : Fragment() {
     private val sharedViewModel: SharedViewModel by activityViewModels()
     private var currentToast: Toast? = null
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
+    }
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_home, container, false)
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        (activity as AppCompatActivity).apply {
+            setSupportActionBar(fragment_home_toolbar)
+        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupView()
         observeViewModel()
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.home_fragment_toolbar_menu, menu)
+        super.onCreateOptionsMenu(menu, inflater)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when(item.itemId) {
+            R.id.home_fragment_about_menu_item -> {
+                val alertDialog = AlertDialog.Builder(activity as Activity).create()
+                alertDialog.apply {
+                    setTitle("COVID-19 ID v0.6.0")
+                    setMessage("Author: Nandra Saputra\nwww.github.com/nandrasaputra/Covid19ID")
+                    setIcon(R.drawable.img_covid_logo)
+                    setButton(AlertDialog.BUTTON_POSITIVE, "OK", object : DialogInterface.OnClickListener {
+                        override fun onClick(dialog: DialogInterface?, which: Int) {
+                            dialog?.dismiss()
+                        }
+                    })
+                }.show()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 
     private fun observeViewModel() {
@@ -45,6 +84,9 @@ class HomeFragment : Fragment() {
         })
         sharedViewModel.homeIndonesiaProvinceCoronaDataLoadState.observe(viewLifecycleOwner, Observer {
             handleIndonesiaProvinceCoronaDataLoadState(it)
+        })
+        sharedViewModel.homeOtherCountriesCoronaDataLoadState.observe(viewLifecycleOwner, Observer {
+            handleOtherCountriesCoronaDataLoadState(it)
         })
     }
 
@@ -156,9 +198,34 @@ class HomeFragment : Fragment() {
         }
     }
 
+    private fun handleOtherCountriesCoronaDataLoadState(state: DataLoadState) {
+        when(state) {
+            is DataLoadState.Loaded -> {
+                fragment_home_other_countries_case_shimmer.visibility = View.GONE
+                fragment_home_other_countries_case_group.visibility = View.VISIBLE
+            }
+            DataLoadState.Unloaded -> {
+                sharedViewModel.getHomeOtherCountriesCoronaList(Dispatchers.IO)
+            }
+            DataLoadState.Loading -> {
+                fragment_home_other_countries_case_shimmer.visibility = View.VISIBLE
+            }
+            is DataLoadState.Error -> {
+                if (isConnectedToInternet()) {
+                    sharedViewModel.getHomeOtherCountriesCoronaList(Dispatchers.IO)
+                } else {
+                    fragment_home_other_countries_case_shimmer.visibility = View.GONE
+                }
+            }
+        }
+    }
+
     private fun setupView() {
         fragment_home_province_case_content.setOnClickListener {
             findNavController().navigate(R.id.action_homeFragment_to_indonesiaProvinceDetailFragment)
+        }
+        fragment_home_other_countries_case_content.setOnClickListener {
+            findNavController().navigate(R.id.action_homeFragment_to_otherCountriesDetailFragment)
         }
     }
 

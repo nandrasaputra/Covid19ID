@@ -6,7 +6,11 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     app:cardBackgroundColor="#E0F7FA"
-    app:cardCornerRadius="16dp">
+    app:cardCornerRadius="16dp"
+    android:layout_marginTop="8dp"
+    android:layout_marginBottom="8dp"
+    android:layout_marginStart="16dp"
+    android:layout_marginEnd="16dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -14,29 +18,44 @@
         android:paddingTop="16dp"
         android:paddingBottom="16dp">
 
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:id="@+id/other_countries_detail_item_flag"
+            android:layout_width="30dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="16dp"
+            app:riv_corner_radius="8dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toBottomOf="@id/other_countries_detail_item_title"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/other_countries_detail_item_title" />
+
         <TextView
-            android:id="@+id/case_item_title"
+            android:id="@+id/other_countries_detail_item_title"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@id/other_countries_detail_item_flag"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="16dp"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:text="Nama Negara"
             android:layout_marginStart="16dp"
-            android:text="Title"
             android:textColor="#000000"
             android:textSize="16sp"
             android:fontFamily="@font/airbnb_medium"/>
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/case_item_infected_layout"
+            android:id="@+id/other_countries_detail_item_infected_layout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            app:layout_constraintEnd_toStartOf="@id/case_item_recovered_layout"
-            app:layout_constraintTop_toBottomOf="@id/case_item_title"
+            app:layout_constraintEnd_toStartOf="@id/other_countries_detail_item_recovered_layout"
+            app:layout_constraintTop_toBottomOf="@id/other_countries_detail_item_title"
             app:layout_constraintStart_toStartOf="parent">
 
             <ImageView
-                android:id="@+id/case_item_infected_image"
+                android:id="@+id/other_countries_detail_item_infected_image"
                 android:layout_width="32dp"
                 android:layout_height="32dp"
                 android:src="@drawable/ic_infected"
@@ -45,7 +64,7 @@
                 app:layout_constraintEnd_toEndOf="parent"/>
 
             <TextView
-                android:id="@+id/case_item_total_infected_count_number"
+                android:id="@+id/other_countries_detail_item_total_infected_count_number"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/airbnb_medium"
@@ -53,36 +72,36 @@
                 android:textColor="#FFB74C"
                 android:textSize="14sp"
                 android:layout_marginTop="8dp"
-                app:layout_constraintStart_toStartOf="@id/case_item_infected_image"
-                app:layout_constraintTop_toBottomOf="@id/case_item_infected_image"
-                app:layout_constraintEnd_toEndOf="@id/case_item_infected_image" />
+                app:layout_constraintStart_toStartOf="@id/other_countries_detail_item_infected_image"
+                app:layout_constraintTop_toBottomOf="@id/other_countries_detail_item_infected_image"
+                app:layout_constraintEnd_toEndOf="@id/other_countries_detail_item_infected_image" />
 
             <TextView
-                android:id="@+id/case_item_total_infected_count_text"
+                android:id="@+id/other_countries_detail_item_total_infected_count_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/airbnb_book"
                 android:text="Positif"
                 android:textColor="#FFB74C"
                 android:textSize="12sp"
-                app:layout_constraintEnd_toEndOf="@id/case_item_total_infected_count_number"
-                app:layout_constraintStart_toStartOf="@id/case_item_total_infected_count_number"
-                app:layout_constraintTop_toBottomOf="@id/case_item_total_infected_count_number"
+                app:layout_constraintEnd_toEndOf="@id/other_countries_detail_item_total_infected_count_number"
+                app:layout_constraintStart_toStartOf="@id/other_countries_detail_item_total_infected_count_number"
+                app:layout_constraintTop_toBottomOf="@id/other_countries_detail_item_total_infected_count_number"
                 app:layout_constraintBottom_toBottomOf="parent"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/case_item_recovered_layout"
+            android:id="@+id/other_countries_detail_item_recovered_layout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            app:layout_constraintTop_toBottomOf="@id/case_item_title"
-            app:layout_constraintStart_toEndOf="@id/case_item_infected_layout"
-            app:layout_constraintEnd_toStartOf="@id/case_item_death_layout">
+            app:layout_constraintTop_toBottomOf="@id/other_countries_detail_item_title"
+            app:layout_constraintStart_toEndOf="@id/other_countries_detail_item_infected_layout"
+            app:layout_constraintEnd_toStartOf="@id/other_countries_detail_item_death_layout">
 
             <ImageView
-                android:id="@+id/case_item_recovered_image"
+                android:id="@+id/other_countries_detail_item_recovered_image"
                 android:layout_width="32dp"
                 android:layout_height="32dp"
                 android:src="@drawable/ic_recovered"
@@ -91,7 +110,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/case_item_total_recovered_count_number"
+                android:id="@+id/other_countries_detail_item_total_recovered_count_number"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/airbnb_medium"
@@ -99,36 +118,36 @@
                 android:textColor="#58D66B"
                 android:textSize="14sp"
                 android:layout_marginTop="8dp"
-                app:layout_constraintStart_toStartOf="@id/case_item_recovered_image"
-                app:layout_constraintTop_toBottomOf="@id/case_item_recovered_image"
-                app:layout_constraintEnd_toEndOf="@id/case_item_recovered_image" />
+                app:layout_constraintStart_toStartOf="@id/other_countries_detail_item_recovered_image"
+                app:layout_constraintTop_toBottomOf="@id/other_countries_detail_item_recovered_image"
+                app:layout_constraintEnd_toEndOf="@id/other_countries_detail_item_recovered_image" />
 
             <TextView
-                android:id="@+id/case_item_total_recovered_count_text"
+                android:id="@+id/other_countries_detail_item_total_recovered_count_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/airbnb_book"
                 android:text="Sembuh"
                 android:textColor="#58D66B"
                 android:textSize="12sp"
-                app:layout_constraintEnd_toEndOf="@id/case_item_total_recovered_count_number"
-                app:layout_constraintStart_toStartOf="@id/case_item_total_recovered_count_number"
-                app:layout_constraintTop_toBottomOf="@id/case_item_total_recovered_count_number"
+                app:layout_constraintEnd_toEndOf="@id/other_countries_detail_item_total_recovered_count_number"
+                app:layout_constraintStart_toStartOf="@id/other_countries_detail_item_total_recovered_count_number"
+                app:layout_constraintTop_toBottomOf="@id/other_countries_detail_item_total_recovered_count_number"
                 app:layout_constraintBottom_toBottomOf="parent"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/case_item_death_layout"
+            android:id="@+id/other_countries_detail_item_death_layout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            app:layout_constraintStart_toEndOf="@id/case_item_recovered_layout"
-            app:layout_constraintTop_toBottomOf="@id/case_item_title"
+            app:layout_constraintStart_toEndOf="@id/other_countries_detail_item_recovered_layout"
+            app:layout_constraintTop_toBottomOf="@id/other_countries_detail_item_title"
             app:layout_constraintEnd_toEndOf="parent">
 
             <ImageView
-                android:id="@+id/case_item_death_image"
+                android:id="@+id/other_countries_detail_item_death_image"
                 android:layout_width="32dp"
                 android:layout_height="32dp"
                 android:src="@drawable/ic_death"
@@ -137,7 +156,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/case_item_total_death_count_number"
+                android:id="@+id/other_countries_detail_item_total_death_count_number"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/airbnb_medium"
@@ -145,36 +164,23 @@
                 android:textColor="#FD305A"
                 android:textSize="14sp"
                 android:layout_marginTop="8dp"
-                app:layout_constraintStart_toStartOf="@id/case_item_death_image"
-                app:layout_constraintTop_toBottomOf="@id/case_item_death_image"
-                app:layout_constraintEnd_toEndOf="@id/case_item_death_image" />
+                app:layout_constraintStart_toStartOf="@id/other_countries_detail_item_death_image"
+                app:layout_constraintTop_toBottomOf="@id/other_countries_detail_item_death_image"
+                app:layout_constraintEnd_toEndOf="@id/other_countries_detail_item_death_image" />
 
             <TextView
-                android:id="@+id/case_item_total_death_count_text"
+                android:id="@+id/other_countries_detail_item_total_death_count_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/airbnb_book"
                 android:text="Meninggal"
                 android:textColor="#FD305A"
                 android:textSize="12sp"
-                app:layout_constraintEnd_toEndOf="@id/case_item_total_death_count_number"
-                app:layout_constraintStart_toStartOf="@id/case_item_total_death_count_number"
-                app:layout_constraintTop_toBottomOf="@id/case_item_total_death_count_number" />
+                app:layout_constraintEnd_toEndOf="@id/other_countries_detail_item_total_death_count_number"
+                app:layout_constraintStart_toStartOf="@id/other_countries_detail_item_total_death_count_number"
+                app:layout_constraintTop_toBottomOf="@id/other_countries_detail_item_total_death_count_number" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <TextView
-            android:id="@+id/case_item_last_update"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:fontFamily="@font/airbnb_book"
-            android:layout_marginEnd="16dp"
-            android:textSize="12sp"
-            android:textColor="#2196F3"
-            android:text="Last Update = 12 Maret 2020"
-            android:visibility="gone"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

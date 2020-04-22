@@ -1,7 +1,6 @@
 package com.nandra.covid19id.ui
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -57,7 +56,6 @@ class IndonesiaProvinceDetailFragment : Fragment() {
         when(state) {
             is DataLoadState.Loaded -> {
                 indonesiaProvinceDetailListAdapter.submitList(state.data as List<Attributes>)
-                Log.d("COVIDNANDRA", state.data.toString())
             }
             DataLoadState.Unloaded -> {
 

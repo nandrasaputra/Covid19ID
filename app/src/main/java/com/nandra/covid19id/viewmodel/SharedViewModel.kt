@@ -12,6 +12,7 @@ import com.nandra.covid19id.model.Content
 import com.nandra.covid19id.network.response.model.Attributes
 import com.nandra.covid19id.repository.CovidRepository
 import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class SharedViewModel(app: Application) : AndroidViewModel(app) {
@@ -42,39 +43,49 @@ class SharedViewModel(app: Application) : AndroidViewModel(app) {
         get() = _homeIndonesiaProvinceCoronaDataLoadState
     private val _homeIndonesiaProvinceCoronaDataLoadState = MutableLiveData<DataLoadState>(DataLoadState.Unloaded)
 
-    fun getInformationIntroductionList(dispatcher: CoroutineDispatcher) {
+    val homeOtherCountriesCoronaDataLoadState: LiveData<DataLoadState>
+        get() = _homeOtherCountriesCoronaDataLoadState
+    private val _homeOtherCountriesCoronaDataLoadState = MutableLiveData<DataLoadState>(DataLoadState.Unloaded)
+
+    fun getInformationIntroductionList(dispatcher: CoroutineDispatcher = Dispatchers.IO) {
         viewModelScope.launch(dispatcher) {
             fetchInformationIntroductionList()
         }
     }
 
-    fun getInformationOtherList(dispatcher: CoroutineDispatcher) {
+    fun getInformationOtherList(dispatcher: CoroutineDispatcher = Dispatchers.IO) {
         viewModelScope.launch(dispatcher) {
             fetchInformationOtherList()
         }
     }
 
-    fun getInformationLamanList(dispatcher: CoroutineDispatcher) {
+    fun getInformationLamanList(dispatcher: CoroutineDispatcher = Dispatchers.IO) {
         viewModelScope.launch(dispatcher) {
             fetchInformationLamanList()
         }
     }
 
-    fun getHomeIndonesiaCoronaList(dispatcher: CoroutineDispatcher) {
+    fun getHomeIndonesiaCoronaList(dispatcher: CoroutineDispatcher = Dispatchers.IO) {
         viewModelScope.launch(dispatcher) {
             fetchHomeIndonesiaCoronaData()
         }
     }
 
-    fun getHomeGlobalCoronaList(dispatcher: CoroutineDispatcher) {
+    fun getHomeGlobalCoronaList(dispatcher: CoroutineDispatcher = Dispatchers.IO) {
         viewModelScope.launch(dispatcher) {
             fetchHomeGlobalCoronaData()
         }
     }
 
-    fun getHomeIndonesiaProvinceCoronaList(dispatcher: CoroutineDispatcher) {
+    fun getHomeIndonesiaProvinceCoronaList(dispatcher: CoroutineDispatcher = Dispatchers.IO) {
         viewModelScope.launch(dispatcher) {
             fetchHomeIndonesiaProvinceCoronaData()
+        }
+    }
+
+    fun getHomeOtherCountriesCoronaList(dispatcher: CoroutineDispatcher = Dispatchers.IO) {
+        viewModelScope.launch(dispatcher) {
+            fetchOtherCountriesCoronaData()
         }
     }
 
@@ -184,6 +195,21 @@ class SharedViewModel(app: Application) : AndroidViewModel(app) {
             }
         } catch (exception: Exception) {
             _homeIndonesiaProvinceCoronaDataLoadState.postValue(DataLoadState.Error(exception.message ?: "Gagal Memuat Data, Silahkan Periksa Koneksi Internet"))
+        }
+    }
+
+    private suspend fun fetchOtherCountriesCoronaData() {
+        _homeOtherCountriesCoronaDataLoadState.postValue(DataLoadState.Loading)
+        try {
+            val response = covidRepository.getCountriesDataResponse()
+            if (response.isSuccessful) {
+                val data = response.body()?.toList()!!
+                _homeOtherCountriesCoronaDataLoadState.postValue(DataLoadState.Loaded(data))
+            } else {
+                _homeOtherCountriesCoronaDataLoadState.postValue(DataLoadState.Error("Gagal Memuat Data, Silahkan Periksa Koneksi Internet"))
+            }
+        } catch (exception: Exception) {
+            _homeOtherCountriesCoronaDataLoadState.postValue(DataLoadState.Error(exception.message ?: "Gagal Memuat Data, Silahkan Periksa Koneksi Internet"))
         }
     }
 
