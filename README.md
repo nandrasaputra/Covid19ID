@@ -4,11 +4,12 @@
 Covid-19 ID is an unofficial Covid-19 tracker and awareness app that has Beranda (display covid 19 cases), information (give information related to covid-19) and Bantuan (show emergencies related stuff). This app is developed to participate in <a href='https://www.dicoding.com/challenges/580'>IDCamp 2020 Developer Challenge - Lawan Penyebaran COVID-19 dengan Inovasi</a>, a <a href='https://www.dicoding.com/'>Dicoding</a> challanges.
 
 ## Preview
-<p float="left">
-  <img src="docs/covid19id_beranda.jpg" height="550" />
-  <img src="docs/covid19id_informasi.jpg" height="550" />
-  <img src="docs/covid19id_demo_v1.gif" height="550" />
+<p float="center">
+  <img src="docs/Covid-19%20Presentation%20V1.png" width="1000" />
 </p>
+
+## Demo
+You can view the app demo on youtube: https://youtu.be/sft7icKDA5k
 
 ## Built With
 
@@ -29,7 +30,7 @@ Nandra Saputra
 * <a href='https://www.linkedin.com/in/nandra-saputra-b90b78157/'>LinkedIn</a> Account
 
 ## Download Application - APK File
-This app require Android 5.0 - Lolipop or higher to run, <a href='http://www.bit.ly/CovidDownload'>Download Link</a>
+This app require Android 5.0 - Lolipop or higher to run, Please check release section to download the APK file.
 
 ## License
 
