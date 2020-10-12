@@ -14,6 +14,8 @@ You can view the app demo on youtube: https://youtu.be/sft7icKDA5k
 ## Built With
 
 <pre>
+<a href='https://github.com/ReactiveX/RxJava'>RxJava</a> - RxJava is a Java VM implementation of Reactive Extensions: a library for composing asynchronous and event-based programs by using observable sequences.
+<a href='https://github.com/google/dagger'>Dagger</a> - A fast dependency injector for Java and Android..
 <a href='https://developer.android.com/jetpack'>Android Jetpack</a> - ViewModel, Navigation, LiveData etc.
 <a href='https://firebase.google.com/'>Firebase</a> - Firebase Database and Firebase Storage.
 <a href='https://github.com/google/gson'>Gson</a> - A Java serialization/deserialization library to convert Java Objects into JSON and back.
@@ -27,7 +29,7 @@ You can view the app demo on youtube: https://youtu.be/sft7icKDA5k
 
 Nandra Saputra
 * <a href='https://www.instagram.com/nandrasptr/'>@nandrasptr</a> on Instagram
-* <a href='https://www.linkedin.com/in/nandra-saputra-b90b78157/'>LinkedIn</a> Account
+* <a href='https://www.linkedin.com/in/nandrasaputra/'>LinkedIn</a> Account
 
 ## Download Application - APK File
 This app require Android 5.0 - Lolipop or higher to run, Please check release section to download the APK file.
