@@ -13,6 +13,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toTopOf="@id/main_activity_bottom_navigation_view"/>
 
+    <include layout="@layout/fake_shadow"
+        android:id="@+id/main_activity_fake_shadow"
+        android:layout_height="3dp"
+        android:layout_width="match_parent"
+        app:layout_constraintBottom_toTopOf="@id/main_activity_bottom_navigation_view"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/main_activity_bottom_navigation_view"
         android:theme="@style/CustomBottomNavigationTheme"

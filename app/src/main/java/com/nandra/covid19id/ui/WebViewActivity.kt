@@ -2,10 +2,8 @@ package com.nandra.covid19id.ui
 
 import android.annotation.SuppressLint
 import android.content.Intent
-import android.content.res.Configuration
 import android.graphics.Bitmap
 import android.net.Uri
-import android.os.Build
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -35,14 +33,6 @@ class WebViewActivity : AppCompatActivity() {
 
         setupToolbar()
         setupWebView()
-    }
-
-    //Workaround of a bug with appcompat 1.1.0 - https://issuetracker.google.com/issues/141132133
-    override fun applyOverrideConfiguration(overrideConfiguration: Configuration) {
-        if (Build.VERSION.SDK_INT in 21..22) {
-            return
-        }
-        super.applyOverrideConfiguration(overrideConfiguration)
     }
 
     override fun onBackPressed() {
@@ -145,7 +135,12 @@ class WebViewActivity : AppCompatActivity() {
             }
             R.id.activity_web_view_toolbar_browser_menu_item -> {
                 val openBrowserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(currentUrl))
-                startActivity(openBrowserIntent)
+                if (openBrowserIntent.resolveActivity(packageManager) != null) {
+                    startActivity(openBrowserIntent)
+                }
+                else {
+                    Toast.makeText(this, "Tidak ada browser yang tersedia", Toast.LENGTH_SHORT).show()
+                }
                 true
             }
             R.id.activity_web_view_toolbar_close_menu_item -> {

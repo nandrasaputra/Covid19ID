@@ -8,11 +8,11 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.nandra.covid19id.R
 import com.nandra.covid19id.adapter.IndonesiaProvinceDetailListAdapter.IndonesiaProvinceDetailViewHolder
-import com.nandra.covid19id.network.response.model.Attributes
+import com.nandra.covid19id.core.domain.model.IndonesiaProvinceCase
 import kotlinx.android.synthetic.main.fragment_indonesia_province_detail_item.view.*
 
 class IndonesiaProvinceDetailListAdapter
-    : ListAdapter<Attributes, IndonesiaProvinceDetailViewHolder>(
+    : ListAdapter<IndonesiaProvinceCase, IndonesiaProvinceDetailViewHolder>(
     attributesDiffUtil) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): IndonesiaProvinceDetailViewHolder {
@@ -25,25 +25,25 @@ class IndonesiaProvinceDetailListAdapter
     }
 
     inner class IndonesiaProvinceDetailViewHolder(view: View): RecyclerView.ViewHolder(view) {
-        fun bind(attributes: Attributes) {
-            val provinceName = "Provinsi ${attributes.namaProvinsi}"
+        fun bind(case: IndonesiaProvinceCase) {
+            val provinceName = "Provinsi ${case.title}"
             itemView.apply {
                 province_detail_item_title.text = provinceName
-                province_detail_item_total_infected_count_number.text = attributes.kasusPositif.toString()
-                province_detail_item_total_recovered_count_number.text = attributes.kasusSembuh.toString()
-                province_detail_item_total_death_count_number.text = attributes.kasusMeninggal.toString()
+                province_detail_item_total_infected_count_number.text = case.positiveCase.toString()
+                province_detail_item_total_recovered_count_number.text = case.curedCase.toString()
+                province_detail_item_total_death_count_number.text = case.deathCase.toString()
             }
         }
     }
 
     companion object {
-        val attributesDiffUtil = object : DiffUtil.ItemCallback<Attributes>() {
-            override fun areItemsTheSame(oldItem: Attributes, newItem: Attributes): Boolean {
+        val attributesDiffUtil = object : DiffUtil.ItemCallback<IndonesiaProvinceCase>() {
+            override fun areItemsTheSame(oldItem: IndonesiaProvinceCase, newItem: IndonesiaProvinceCase): Boolean {
                 return oldItem == newItem
             }
 
-            override fun areContentsTheSame(oldItem: Attributes, newItem: Attributes): Boolean {
-                return oldItem.fID == newItem.fID
+            override fun areContentsTheSame(oldItem: IndonesiaProvinceCase, newItem: IndonesiaProvinceCase): Boolean {
+                return oldItem.id == newItem.id
             }
         }
     }

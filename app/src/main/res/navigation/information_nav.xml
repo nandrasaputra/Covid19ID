@@ -9,7 +9,7 @@
 
     <fragment
         android:id="@+id/informationFragment"
-        android:name="com.nandra.covid19id.ui.InformationFragment"
+        android:name="com.nandra.covid19id.ui.information.InformationFragment"
         android:label="InformationFragment" />
 
 </navigation>
